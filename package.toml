@@ -28,7 +28,9 @@ path = "/var/www/armada"
 mode = 0o755
 
 [web]
-domain = "example.test"
+# No domain here on purpose - it's install-time, not manifest content:
+# `nostrhost app install armada --source . --domain <your-domain>`.
+# See AGENTS.md's "Install-time domain/path".
 path = "/armada/"
 file_root = "/var/www/armada"
 auth = "nostrhost"

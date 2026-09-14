@@ -20,6 +20,15 @@ questions, so `VITE_APP_NAME`/`VITE_APP_RELAYS`/`VITE_SEARCH_RELAYS`/
 `BUILD_ENV`, currently armada_ynh's own hardcoded defaults). Every install of
 a given package version gets the same relay configuration.
 
+## Installing
+
+```sh
+nostrhost app install armada --source . --domain <your-domain>
+```
+
+`[web].domain` isn't in `package.toml` — it's supplied at install time (see
+`AGENTS.md`'s "Install-time domain/path").
+
 ## Bumping to a new Armada version
 
 Upstream doesn't reliably tag releases — armada_ynh itself pins a commit
