@@ -18,11 +18,8 @@ version = "0.59.2"
 [source.main]
 # Update together on every version bump: run .github/workflows/build.yml
 # against the new upstream ref, then copy its printed url/sha256 here.
-# NB: the asset filename embeds the raw pinned commit hash, not "v0.59.2" -
-# armada's upstream_ref is a bare commit (no tag), and build.sh names the
-# artifact from upstream_ref verbatim. See build.sh's PACKAGE_VERSION note.
-url = "https://github.com/imattau/armada_nh/releases/download/v0.59.2/armada-v17d4fcb0d0d478e42dffde6b42b276eba07d0b39.tar.gz"
-sha256 = "ff39bda1e341bf556d3bf1346513db877eedaf1e7be9edf9e37c9e2b4eb2e04a"
+url = "https://github.com/imattau/armada_nh/releases/download/v0.59.2/armada-v0.59.2.tar.gz"
+sha256 = "b0589bbbd27fb1b25e498c122b694b37362539cbb7e7ce2c8dd793a61adb11eb"
 extract = true
 destination = "/var/www/armada"
 
