@@ -1,0 +1,51 @@
+# Native NostrHost package manifest (`_nh` format) for Armada
+# (https://armada.buzz, https://gitlab.com/soapbox-pub/armada) — an
+# end-to-end encrypted Nostr community chat SPA. Scriptless: [source.main]
+# points at this repo's own pre-built GitHub Release artifact (see
+# docs/security-model.md for why), produced by build.sh /
+# .github/workflows/build.yml from the pinned upstream ref below.
+#
+# Companion classic package: https://github.com/imattau/armada_ynh (builds
+# with `npm run build` at install time, and lets the admin type app_relays /
+# search_relays / platform_relays at install). This native package bakes the
+# same three VITE_* values in at build time instead - see build.yml's
+# BUILD_ENV and docs/new-package.md's "Behavior note".
+
+[app]
+id = "armada"
+version = "0.59.2"
+
+[source.main]
+# Update together on every version bump: run .github/workflows/build.yml
+# against the new upstream ref, then copy its printed url/sha256 here.
+url = "https://github.com/imattau/armada_nh/releases/download/v0.59.2/armada-v0.59.2.tar.gz"
+sha256 = "0000000000000000000000000000000000000000000000000000000000000000"
+extract = true
+destination = "/var/www/armada"
+
+[directories.install]
+path = "/var/www/armada"
+mode = 0o755
+
+[web]
+domain = "example.test"
+path = "/armada/"
+file_root = "/var/www/armada"
+auth = "nostrhost"
+https = "automatic"
+
+[permissions.main]
+url = "/"
+allowed = ["all_users"]
+auth_request = true
+
+[health]
+type = "http"
+path = "/armada/"
+timeout = 10
+retries = 2
+
+[backup]
+# Stateless build output; a restore just re-fetches source.main.
+paths = []
+database = false
